@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    
+
+    <!-- more bean definitions for data access objects go here -->
+    
+    <bean id="person" class="com.example.demo.bean.Person" >
+    	<property name="id" value="10"></property>
+    	<property name="name" value="Bhanu"></property>
+    </bean>
+    
+    <bean id="cc" class="com.example.demo.bean.ConstrucotBeab">
+    <constructor-arg name="p1" index="0">
+    	<value>10</value>
+    	
+    </constructor-arg>
+    
+    <constructor-arg name="p2"  index="1">
+    	<value>hello</value>
+    	
+    </constructor-arg>
+    <constructor-arg name="p3"  index="2">
+    	<value>bhau@gmail.com</value>
+    	
+    </constructor-arg>
+    </bean>
+    
+     <bean id="li" class="com.example.demo.bean.ListDI">
+     	<property name="l1">
+     	<util:list list-class="java.util.LinkedList">
+     			<value>s1</value>
+     			<value>s2</value>
+     	</util:list>
+     	</property>
+     	
+     	<property name="l2">
+     		<util:list>
+     			<value>s3</value>
+     			<value>s4</value>
+     		</util:list>
+     	</property>
+     	
+     	<property name="l3">
+     		<util:list>
+     			<value>s5</value>
+     			<value>s6</value>
+     		</util:list>
+     	</property>
+     	
+     	<property name="l4">
+     		<util:list>
+     			<value>s7</value>
+     			<value>s8</value>
+     		</util:list>
+     	</property>
+     </bean>
+    
+    <bean id="c1" class="com.example.demo.bean.Class1" autowire="byName">
+    </bean>
+    
+    <bean name="class2" class="com.example.demo.bean.Class2">
+    	<property name="id2" value="10"></property>
+    </bean>
+    
+    <bean name="class3" class="com.example.demo.bean.Class3">
+    	<property name="id3" value="10"></property>
+    </bean>
+    
+    
+<!--     Abstract demo -->
+    <bean id = "beanTeamplate" abstract = "true">
+      <property name = "message1" value = "Hello World!"/>
+      <property name = "message2" value = "Hello Second World!"/>
+      <property name = "message3" value = "Namaste India!"/>
+   </bean>
+
+   <bean id = "helloIndia" class = "com.example.demo.abstractinbean.HelloIndia" parent = "beanTeamplate">
+      <property name = "message1" value = "Hello India!"/>
+      <property name = "message3" value = "Namaste India!"/>
+   </bean>
+
+</beans>
